@@ -1,5 +1,5 @@
 from constants import *
-from databasesetup import *
+from database import *
 
 if __name__ == "__main__":
     with mysql.connector.connect(**DB_CONFIG) as cnx:

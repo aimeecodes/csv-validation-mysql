@@ -1,5 +1,5 @@
 # list of constants to imported into appropriate function calls
-# in databasesetup.py, validatecsv.py
+# in database.py, validation.py
 
 DB_CONFIG = {"user": username, "password": pswd, "host": "localhost", "port": 3336}
 
@@ -9,9 +9,14 @@ DB_NAME = "Berkeley"
 # key   -- table name in SQL database
 # value -- dictionary with table's "filepath", "createcommand",
 #          "columns", and "columntypes"
+# TABLES = {}
+# TABLES[tablename]["filepath"]
+# TABLES[tablename]["createcommand"]
+# TABLES[tablename]["columns"]
+# TABLES[tablename]["columntypes"]
 TABLES = {}
 TABLES["stateStops"] = {}
-TABLES["stateStops"]["filepath"] = "state.csv"
+TABLES["stateStops"]["filepath"] = "csvfiles/state.csv"
 TABLES["stateStops"]["createcommand"] = (
     "create table `stateStops` ("
     "  `state`        varchar(20)  not null,"
@@ -55,7 +60,7 @@ TABLES["stateStops"]["columntypes"] = [
 ]
 ################################################################################
 TABLES["cityStops"] = {}
-TABLES["cityStops"]["filepath"] = "opp-stops_city.csv"
+TABLES["cityStops"]["filepath"] = "csvfiles/opp-stops_city.csv"
 TABLES["cityStops"]["createcommand"] = (
     "create table `cityStops` ("
     "  `city`         varchar(20)  not null,"
@@ -99,7 +104,7 @@ TABLES["cityStops"]["columntypes"] = [
 ]
 ################################################################################
 TABLES["mjSearches"] = {}
-TABLES["mjSearches"]["filepath"] = "opp-search-marijuana_state.csv"
+TABLES["mjSearches"]["filepath"] = "csvfiles/opp-search-marijuana_state.csv"
 TABLES["mjSearches"]["createcommand"] = (
     "create table `mjSearches` ("
     "  `state`       varchar(20) not null,"
@@ -121,14 +126,3 @@ TABLES["mjSearches"]["columntypes"] = [str, str, bool, "date", float]
 # define a list of NA values as strings that may be encountered
 # when parsing a csv file
 NA_LIST = ["na", "n a", "n/a", "nan"]
-
-# create dictionary of table columns and types where
-# key      -- table name
-#
-# # create FILEPATHS dictionary where
-# # key   -- table name in SQL database
-# # value -- string of filepath location
-# FILEPATHS = {}
-# FILEPATHS["stateStops"] = "state.csv"
-# FILEPATHS["cityStops"]  = "opp-stops_city.csv"
-# FILEPATHS["mjSearches"] = "opp-search-marijuana_state.csv"

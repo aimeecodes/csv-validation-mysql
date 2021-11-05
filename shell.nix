@@ -5,7 +5,6 @@ stdenv.mkDerivation {
     mysql80
     black
   ]) ++ ( with pkgs.python39Packages; [
-    dask
     mysql-connector
   ]);
 }
