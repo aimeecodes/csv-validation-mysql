@@ -96,10 +96,16 @@ def lbl_insert(cursor, tables):
             csvreader = csv.reader(csvfile)
             for record in csvreader:
                 if validate_record(record, coltypes):
+                    # reformat any NA fields
+                    record = reformat_NA(record)
+
+                    # reformat boolean fields
+                    record = reformat_bool(record, coltypes)
+
+                    # create SQL insertion statement
                     sql_statement = make_insert(tab, tables[tab]["columns"], record)
-                    valid_records.append(sql_statement)
-                    print(sql_statement)
-                    cursor.execute(sql_statement)
+                    # execute the insert statement
+                    cursor.execute(sql_statement, record)
                 else:
                     invalid_records.append(record)
 
@@ -123,14 +129,14 @@ def make_insert(tablename, columns, record):
     schema    -- list of columns in the schema of table
     record    -- list of values to be inserted to table
     """
-    sql = (
-        "INSERT INTO {}".format(tablename)
-        + " ("
-        + ",".join(columns)
-        + ") VALUES "
-        + str(tuple(record))
+    query_placeholders = ', '.join(['%s'] * len(columns))
+    query_columns = ', '.join(columns)
+    insert_sql = (
+        '''INSERT INTO %s (%s) VALUES (%s)''' %(tablename,
+                                                query_columns,
+                                                query_placeholders)
     )
-    return sql
+    return insert_sql
 
 
 ################################################################################

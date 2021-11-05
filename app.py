@@ -13,3 +13,6 @@ if __name__ == "__main__":
             # validate and insert csv files
             # to tables line by line
             lbl_insert(cursor, TABLES)
+
+            # commit all changes to the database
+            cnx.commit()
