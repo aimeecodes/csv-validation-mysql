@@ -1,5 +1,5 @@
 # CSV Validator and Database Uploader
-**Why**: MySQL classifies "NA" values as 0 in numerical fields, which messed up my data. [With a few hours experience, I can now confirm this is because the fields I was using were classified as `Float`, which cannot have a `NULL` value in MySQL. Fun!]
+**Why**: MySQL classifies "NA" values as 0 in numerical fields, which messed up my data. [With a few hours experience, I can now confirm this is because the columns' datatypes were all `Float`, which cannot have a `NULL` value in MySQL. Fun!]
 
 MySQL formatting aside, I wanted to make a tool that could validate my csv files line by line, let me know which ones had problems (missing fields or fields with mismatching types), and reformat `"NA"`s to `None` for ease of insertion into a default `NULL` column.
 
