@@ -1,7 +1,7 @@
 # list of constants to imported into appropriate function calls
 # in databasesetup.py, validatecsv.py
 
-DB_CONFIG = {"user": "aimee", "password": "temptemp", "host": "localhost", "port": 3336}
+DB_CONFIG = {"user": username, "password": pswd, "host": "localhost", "port": 3336}
 
 DB_NAME = "Berkeley"
 
