@@ -137,28 +137,3 @@ def make_insert(tablename, columns, record):
         query_placeholders,
     )
     return insert_sql
-
-
-################################################################################
-
-# with open('state.csv') as csvfile:
-#     csvreader = csv.reader(csvfile)
-#     for instance in csvreader:
-#         if len(instance) != 11:
-#             print(instance)
-
-# cnx.close()
-
-# def validateLine(instance, expCols, expTypes, expLength):
-#     '''
-#     instance  : list representing attributes of instance
-#     expCols   : list of strings of column titles
-#     expTypes  : list of expected types of data (SQL formatting)
-#     expLength : number of expected columns
-#     '''
-#     # set returned boolean to True by default
-#     validInstance = True
-
-#     # compare length of instance to expLength
-#     if len(instance) != expLength:
-#         return validInstance = False
