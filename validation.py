@@ -97,6 +97,7 @@ def safe_cast(value, casttype, default=None):
     except (ValueError, TypeError):
         return default
 
+
 def reformat_NA(record):
     """
     Accepts a record in list form, where each item is a field;
@@ -107,13 +108,14 @@ def reformat_NA(record):
             record[i] = None
     return record
 
+
 def reformat_bool(record, columntypes):
     """
     Accepts a record in list form, where each item is a field;
     Passes over the list, and reformats string "True" and "False"
     to their Bool equivalent
     """
-    for i, field  in enumerate(record):
+    for i, field in enumerate(record):
         if columntypes[i] == bool:
             record[i] = safe_cast(field, bool)
     return record

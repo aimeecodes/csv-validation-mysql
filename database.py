@@ -129,12 +129,12 @@ def make_insert(tablename, columns, record):
     schema    -- list of columns in the schema of table
     record    -- list of values to be inserted to table
     """
-    query_placeholders = ', '.join(['%s'] * len(columns))
-    query_columns = ', '.join(columns)
-    insert_sql = (
-        '''INSERT INTO %s (%s) VALUES (%s)''' %(tablename,
-                                                query_columns,
-                                                query_placeholders)
+    query_placeholders = ", ".join(["%s"] * len(columns))
+    query_columns = ", ".join(columns)
+    insert_sql = """INSERT INTO %s (%s) VALUES (%s)""" % (
+        tablename,
+        query_columns,
+        query_placeholders,
     )
     return insert_sql
 
