@@ -1,5 +1,7 @@
 # CSV Validator and Database Uploader
-**Why**: MySQL classifies "NA" values as 0 in numerical fields, which messed up my data. I wanted a tool that could validate my csv files line by line, let me know which ones had problems (missing fields or fields with mismatching types), and rewrite "NA" values to the expected MySQL NULL.
+**Why**: MySQL classifies "NA" values as 0 in numerical fields, which messed up my data. [With a few hours experience, I can now confirm this is because the fields I was using were classified as `Float`, which cannot have a `NULL` value in MySQL. Fun!]
+
+MySQL formatting aside, I wanted to make a tool that could validate my csv files line by line, let me know which ones had problems (missing fields or fields with mismatching types), and reformat "NA"s to None for ease of insertion into a default `NULL` column.
 
 **How**: All values are precoded into the `constants.py` script, including:
 + DB_CONFIG: dictionary that holds login information to access the MySQL server, including user, password, host, and port
